@@ -116,6 +116,14 @@ class Teacher : public Person
 
 class Admin : public Person
 {
+    public:
+    Admin() : Person(){
+        cout<<"Admin Constructor created"<<'\n';
+    }
+    Admin(int i, string n, string e) : Person(i, n, e){}
+    ~Admin(){
+        cout<<"Admin Destructor called"<<'\n';
+    }
 };
 
 int main()
@@ -134,5 +142,9 @@ int main()
     User u1(0, "Sachin", "sachin@gmail.com", "MasterBlaster");
     u1.setID(10);
     ptr = &u1;
+    ptr -> printProfile();
+
+    Admin a1(99, "Sameru", "sameru@gmail.com");
+    ptr = &a1;
     ptr -> printProfile();
 }
