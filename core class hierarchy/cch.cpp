@@ -41,7 +41,7 @@ class Person
    virtual ~Person()
    {cout<<"Person Destructor called"<<'\n';};
     
-    virtual void display()
+    virtual void printProfile()
     {
         cout << "Details:" << '\n';
         cout << "ID: " << id << '\n';
@@ -53,6 +53,20 @@ class Person
 class User : public Person
 {
     public:
+    string username;
+    User() : Person(), username("noname"){
+        cout<<"User object created"<<'\n';
+    }
+    User(int i, string n, string e, string u) : Person(i, n, e), username(u){
+        username = u;
+    }
+    void printProfile() override{
+        Person::printProfile();
+        cout<<"Username: "<<username<<'\n';
+    }
+    ~User(){
+        cout<<"User destructor called"<<'\n';
+    }
 };
 
 class Student : public Person
@@ -60,14 +74,16 @@ class Student : public Person
 public:
     double cgpa;
     Student() : Person(), cgpa(0.0)
-    {}
+    {
+        cout<<"Student Object created"<<'\n';
+    }
 
     Student(int r, string n, string e, double c) : Person(r, n, e), cgpa(c)
     {}
 
-    void display() override
+    void printProfile() override
     {
-        Person::display();
+        Person::printProfile();
         cout<<"CGPA: "<< cgpa <<'\n';
     }
 
@@ -81,14 +97,16 @@ class Teacher : public Person
 {
     public:
     string department;
-    Teacher() : Person(), department("none"){};
+    Teacher() : Person(), department("none"){
+        cout<<"Teacher Object Created"<<'\n';
+    };
 
     Teacher(int i, string n, string e, string d) : Person(i, n, e), department(d)
     {}
 
-    void display() override
+    void printProfile() override
     {
-        Person::display();
+        Person::printProfile();
         cout<<"Department: "<< department <<'\n';
     }   
 
@@ -106,10 +124,15 @@ int main()
     Student s1(0, "aarav", "abc@gamil.com", 8.3);
     s1.setID(15);
     ptr = &s1;
-    ptr -> display();
+    ptr -> printProfile();
 
     Teacher t1(0,"Tawqeer","t@gmail.com","CSE");
     t1.setID(2433);
     ptr = &t1;
-    ptr -> display();
+    ptr -> printProfile();
+
+    User u1(0, "Sachin", "sachin@gmail.com", "MasterBlaster");
+    u1.setID(10);
+    ptr = &u1;
+    ptr -> printProfile();
 }
