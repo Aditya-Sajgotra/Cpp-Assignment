@@ -34,7 +34,7 @@ data/ -> Text data files
 logs/ -> Log file
 build/ -> Executable file
 
-Compilation Command g++ -std=c++11 src/main.cpp src/logger.cpp src/AuthManager.cpp src/CourseManager.cpp src/AttendenceManager.cpp src/examManager.cpp src/LibraryManager.cpp -I include -o build/main.exe
+Compilation Command g++ -std=c++11 src/main.cpp src/logger.cpp src/AuthManager.cpp src/CourseManager.cpp src/AttendenceManager.cpp src/examManager.cpp src/LibraryManager.cpp -I include -o build/app.exe
 
 Run Program ./build/app.exe
 
